@@ -46,31 +46,31 @@ local lush = require('lush')
 local hsluv = lush.hsluv
 
 local c = {
-  bg = hsluv('#000000'),
-  fg = hsluv('#ffffff'),
+  bg = hsluv(0, 0, 0),
+  fg = hsluv(0, 0, 100),
 
   -- Dark colours
   d = {
-    black =   hsluv('#000000'),
+    black =   hsluv(0, 0, 0),
     red =     hsluv('#d53100'),
     green =   hsluv('#1cce0b'),
     yellow =  hsluv('#e9b32a'),
     blue =    hsluv('#0042b6'),
     magenta = hsluv('#4b00b0'),
     cyan =    hsluv('#238bc0'),
-    white =   hsluv('#aaaaaa'),
+    white =   hsluv(0, 0, 67),
   },
 
   -- Bright colours
   b = {
-    black =   hsluv('#555555'),
+    black =   hsluv(0, 0, 33),
     red =     hsluv('#ff331c'),
     green =   hsluv('#00ff0b'),
     yellow =  hsluv('#fcd200'),
     blue =    hsluv('#0071ff'),
     magenta = hsluv('#7100ff'),
     cyan =    hsluv('#4bb8fd'),
-    white =   hsluv('#ffffff'),
+    white =   hsluv(0, 0, 100),
   },
 }
 
@@ -90,7 +90,7 @@ local theme = lush(function(injected_functions)
     --
     -- See :h highlight-groups
 
-       Normal         { fg = hsluv(0,0,100), bg = hsluv(0,0,0) }, -- Normal text
+       Normal         { fg = c.fg, bg = c.bg }, -- Normal text
        ColorColumn    { bg = hsluv(0,0,10), }, -- Columns set with 'colorcolumn'
     -- Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
        Cursor         { }, -- Character under the cursor
@@ -111,7 +111,7 @@ local theme = lush(function(injected_functions)
     -- VertSplit      { }, -- Column separating vertically split windows
     -- Folded         { }, -- Line used for closed folds
     -- FoldColumn     { }, -- 'foldcolumn'
-    -- SignColumn     { }, -- Column where |signs| are displayed
+       SignColumn     { bg = hsluv(0, 0, 4) }, -- Column where |signs| are displayed
     -- IncSearch      { }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     -- Substitute     { }, -- |:substitute| replacement text highlighting
        LineNr         { fg = hsluv(0,0,50), bg = hsluv(0,0,8) }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
@@ -169,17 +169,17 @@ local theme = lush(function(injected_functions)
     --
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-       Comment        { fg = hsluv(0,0,67), gui = 'italic' }, -- Any comment
+       Comment        { fg = c.d.white, gui = 'italic' }, -- Any comment
 
        Constant       { fg = c.b.blue.rotate(-10) }, -- (*) Any constant
-       String         { fg = c.b.red.rotate(6)  }, --   A string constant: "this is a string"
+       String         { fg = c.b.red.rotate(10).lighten(15)  }, --   A string constant: "this is a string"
     -- Character      { }, --   A character constant: 'c', '\n'
     -- Number         { }, --   A number constant: 234, 0xff
     -- Boolean        { }, --   A boolean constant: TRUE, false
     -- Float          { }, --   A floating point constant: 2.3e10
 
        Identifier     { fg = Normal.fg }, -- (*) Any variable name
-    -- Function       { }, --   Function name (also: methods for classes)
+       Function       { fg = c.b.cyan }, --   Function name (also: methods for classes)
 
        Statement      { fg = c.b.yellow }, -- (*) Any statement
     -- Conditional    { }, --   if, then, else, endif, switch, etc.
