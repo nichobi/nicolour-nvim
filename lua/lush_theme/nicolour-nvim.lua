@@ -317,6 +317,14 @@ local theme = lush(function(injected_functions)
     -- sym"@preproc"           { }, -- PreProc
     -- sym"@debug"             { }, -- Debug
     -- sym"@tag"               { }, -- Tag
+
+    -- GitSigns Number row highlights
+       GitSignsAddNr  { fg = c.d.green.darken(10), bg = LineNr.bg }, -- diff mode: Added line |diff.txt|
+       GitSignsDeleteNr { fg = c.d.red, bg = LineNr.bg }, -- diff mode: Deleted line |diff.txt|
+       GitSignsTopDeleteNr { fg = c.d.red, bg = LineNr.bg }, -- diff mode: Deleted line |diff.txt|
+       GitSignsChangeNr { fg = c.d.yellow, bg = LineNr.bg }, -- diff mode: Changed line |diff.txt|
+       GitSignsChangeDeleteNr   { DiffDelete, bg = LineNr.bg }, -- diff mode: Changed text within a changed line |diff.txt|
+
 }
 end)
 
