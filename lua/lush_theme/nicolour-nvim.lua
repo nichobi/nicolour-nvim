@@ -142,10 +142,10 @@ local theme = lush(function(injected_functions)
     -- QuickFixLine   { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     -- Search         { }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     -- SpecialKey     { }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
-       SpellBad       { bg = c.d.red.darken(40) }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-       SpellCap       { bg = c.d.blue.darken(40) }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-       SpellLocal     { bg = c.d.cyan.darken(40) }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-       SpellRare      { bg = c.d.magenta.darken(40) }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
+       SpellBad       { sp = c.b.red, gui = 'undercurl' }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+       SpellCap       { sp = c.b.cyan, gui = 'undercurl' }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+       SpellLocal     { sp = c.b.yellow, gui = 'undercurl' }, -- Word that is recognized by i color like the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+       SpellRare      { sp = c.b.magenta, gui = 'undercurl' }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
        StatusLine     { fg = Normal.fg, bg = LineNr.bg }, -- Status line of current window
        StatusLineNC   { Normal }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
        TabLine        { fg = Normal.fg, bg = hsluv(0,0,20) }, -- Tab pages line, not active tab page label
